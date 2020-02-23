@@ -22,6 +22,7 @@
         @keyup.right="focusRight(index)"
         @keypress="validateValue($event, index)"
         @input="handleInput($event, index)"
+        @paste="handlePaste($event)"
       >
     </div>
     <p
@@ -58,7 +59,7 @@ export default {
       codeLocal: Array(4).fill(''),
       isCodeValid: true,
       timer: null,
-      timeLeft: 60,
+      timeLeft: 59,
     };
   },
   mounted() {
@@ -110,8 +111,22 @@ export default {
         this.focusLeft(index);
       }
     },
+    handlePaste(event) {
+      const eventData = event.clipboardData.getData('text/plain');
+      let data = eventData && eventData
+        .split('')
+        .filter((char) => /\d/.test(char))
+        .slice(0, 4);
+      if (data && data.length) {
+        if (data.length < 4) {
+          data = [...data, ...Array(4 - data.length).fill('')];
+        }
+        this.codeLocal = data;
+      }
+      event.preventDefault();
+    },
     startTimer() {
-      this.timeLeft = 60;
+      this.timeLeft = 59;
       this.timer = setInterval(() => {
         if (this.timeLeft === 1) this.stopTimer();
         this.timeLeft -= 1;
@@ -125,4 +140,68 @@ export default {
 </script>
 
 <style scoped lang="stylus">
+.sms-auth
+  display flex
+  flex-direction column
+  align-items flex-start
+  width 100%
+  &__title
+    margin-bottom 9px
+    font-size 14px
+    line-height 20px
+    @media (min-width 1024px)
+      margin 16px 0 10px
+      font-size 20px
+  &__back
+    margin-bottom 29px
+    font-size 14px
+    line-height 20px
+    color #2F80F3
+    cursor pointer
+    @media (min-width 1024px)
+      margin-bottom 35px
+      font-size 20px
+  &__code
+    margin-bottom 66px
+    display flex
+    justify-content space-between
+    width 100%
+    @media (min-width 1024px)
+      margin-bottom 49px
+    &-item
+      width 65px
+      height 65px
+      font-size 30px
+      line-height 20px
+      text-align center
+      border 1px solid #DCE4EE
+      @media (min-width 1024px)
+        width 90px
+        height 80px
+        font-size 40px
+        border 1px solid rgba(47, 128, 243, 0.32)
+      &::placeholder
+        color #F8F9F9
+  &__warning
+    position absolute
+    width 290px
+    top 259px
+    font-size 16px
+    line-height 17px
+    transition all 0.1s ease-out 0s
+    color #DB5454
+    @media (min-width 1024px)
+      width 412px
+      top 299px
+      line-height 20px
+    &--hidden
+      opacity 0
+  &__timer
+    align-self center
+    font-size 16px
+    line-height 20px
+    text-align center
+    color #788AA4
+    &--resend
+      cursor pointer
 </style>

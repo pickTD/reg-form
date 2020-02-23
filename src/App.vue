@@ -58,11 +58,23 @@ export default {
 </script>
 
 <style lang="stylus">
-#app
-  font-family Avenir, Helvetica, Arial, sans-serif
+:root
+  font-family 'SF Pro Display', Helvetica, Arial, sans-serif
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale
-  text-align center
-  color #2c3e50
-  margin-top 60px
+  color #242424
+  font-weight 400
+
+*,
+*::before,
+*::after
+  margin 0
+  box-sizing border-box
+
+.site-content
+  width 100vw
+  height 100vh
+  background white
+  @media (min-width 1024px)
+    background url(./assets/1920.png)
 </style>

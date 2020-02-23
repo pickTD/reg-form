@@ -80,4 +80,62 @@ export default {
 </script>
 
 <style scoped lang="stylus">
+.sign-in
+  display flex
+  flex-direction column
+  align-items flex-start
+  width 100%
+  &__title
+    margin-bottom 14px
+    font-size 16px
+    line-height 20px
+    color #404040
+  &__input
+    margin-bottom 10px
+    padding 0 19px
+    width 100%
+    height 65px
+    font-size 18px
+    line-height 20px
+    border 1px solid #DCE4EE
+    @media (min-width 1024px)
+      padding 0 27px
+    &--error
+      border-color #DB5454
+  &__confirm
+    margin-bottom 50px
+    width 100%
+    height 65px
+    font-size 16px
+    line-height 20px
+    color white
+    border none
+    outline none
+    text-decoration none
+    transition all 0.3s ease-out 0s
+    background #2F80F3
+    cursor pointer
+    &:hover
+      opacity 0.8
+    &--disabled
+      background #DCE4EE
+      cursor not-allowed
+  &__warning
+    position absolute
+    width 290px
+    top 290px
+    font-size 16px
+    line-height 16px
+    transition all 0.1s ease-out 0s
+    color #DB5454
+    @media (min-width 1024px)
+      width 412px
+    &--hidden
+      opacity 0
+  &__accept
+    font-size 14px
+    line-height 20px
+  &__accept-link
+    color inherit
+    text-decoration underline
 </style>
