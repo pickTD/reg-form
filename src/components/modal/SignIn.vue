@@ -6,8 +6,8 @@
     <input
       class="sign-in__input"
       :class="{ 'sign-in__input--error': !isPhoneValid }"
-      v-mask="'+7 (###) ###-##-##'"
-      placeholder="+7 (___) ___-__-__"
+      v-mask="'(###) ###-##-##'"
+      placeholder="(___) ___-__-__"
       type="tel"
       ref="input"
       v-model="phoneLocal"
@@ -60,12 +60,14 @@ export default {
       this.phoneLocal = this.phone;
     }
     this.$nextTick(() => {
-      this.$refs.input.focus();
+      setTimeout(() => {
+        this.$refs.input.focus();
+      }, 100);
     });
   },
   watch: {
     phoneLocal(newVal) {
-      this.isPhoneValid = newVal && newVal.length === 18;
+      this.isPhoneValid = newVal && newVal.length === 15;
     },
   },
   methods: {
@@ -89,17 +91,18 @@ export default {
   width 100%
 
   &__title
-    margin-bottom 14px
+    margin 2px 0 12px
     font-size 16px
     line-height 20px
     color #404040
     letter-spacing -0.3px
     @media (min-width 768px)
+      margin 1px 0 13px
       font-size 18px
 
   &__input
     margin-bottom 10px
-    padding 0 19px
+    padding 0 43px
     width 100%
     height 65px
     font-size 18px
@@ -107,25 +110,24 @@ export default {
     letter-spacing -0.1px
     border 1px solid #DCE4EE
     @media (min-width 768px)
-      padding 0 27px
+      padding 0 54px
       font-size 20px
     &--error
       border-color #DB5454
-    &:placeholder-shown + div
-      content "."
-      font-size 18px
-      line-height 20px
-      display inline
-      color black
-      position absolute
-      top 57px
-      left 20px
-      @media (min-width 768px)
-        font-size 20px
-        top 56px
-        left 28px
-    & + div
-      display none
+
+  &__active-seven
+    content "."
+    font-size 18px
+    line-height 20px
+    display inline
+    color black
+    position absolute
+    top 57px
+    left 20px
+    @media (min-width 768px)
+      font-size 20px
+      top 56px
+      left 28px
 
   &__confirm
     margin-bottom 50px

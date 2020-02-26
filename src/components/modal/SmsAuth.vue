@@ -1,7 +1,7 @@
 <template>
   <div class="sms-auth">
     <p class="sms-auth__title">
-      {{ `Мы отправили код на ${phone}` }}
+      {{ `Мы отправили код на +7 ${phone}` }}
     </p>
     <p
       class="sms-auth__back"
