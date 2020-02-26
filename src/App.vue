@@ -6,6 +6,7 @@
         :is="activeView"
         :phone.sync="phone"
         :code="code"
+        ref="reg"
         @setPhone="verifyPhone"
         @changePhone="changePhone"
         @resendCode="generateCode"
@@ -39,6 +40,12 @@ export default {
         ? 'Вход или регистрация'
         : 'Введите код';
     },
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.$refs.reg.$refs.input.focus();
+      this.$refs.reg.$refs.input.click();
+    });
   },
   methods: {
     generateCode() {

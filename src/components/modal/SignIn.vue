@@ -61,9 +61,7 @@ export default {
     }
     this.$nextTick(() => {
       this.$refs.input.focus();
-      setTimeout(() => {
-        this.$refs.input.click();
-      }, 100);
+      this.$refs.input.click();
     });
   },
   watch: {
