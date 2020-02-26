@@ -60,9 +60,7 @@ export default {
       this.phoneLocal = this.phone;
     }
     this.$nextTick(() => {
-      setTimeout(() => {
-        this.$refs.input.focus();
-      }, 100);
+      this.$refs.input.click();
     });
   },
   watch: {
