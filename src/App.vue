@@ -58,11 +58,22 @@ export default {
 </script>
 
 <style lang="stylus">
+@font-face
+  font-family "SF Pro Display"
+  font-weight 500
+  src url("https://sf.abarba.me/SF-UI-Display-Medium.otf")
+
+@font-face
+  font-family "SF Pro Display"
+  font-weight 400
+  src url("https://sf.abarba.me/SF-UI-Display-Regular.otf")
+
 :root
-  font-family 'SF Pro Display', Helvetica, Arial, sans-serif
+  font-family "SF Pro Display", Helvetica, Arial, sans-serif
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale
   color #242424
+  font-style normal
   font-weight 400
 
 *,
@@ -70,11 +81,12 @@ export default {
 *::after
   margin 0
   box-sizing border-box
+  font-family inherit
 
 .site-content
   width 100vw
   height 100vh
   background white
-  @media (min-width 1024px)
+  @media (min-width 768px)
     background url(./assets/1920.png)
 </style>

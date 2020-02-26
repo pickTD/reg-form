@@ -13,6 +13,7 @@
       v-model="phoneLocal"
       @keyup.enter="setPhone"
     >
+    <div class="sign-in__active-seven">+7</div>
     <button
       class="sign-in__confirm"
       :class="{ 'sign-in__confirm--disabled': !isPhoneValid || isCodeLoading }"
@@ -81,15 +82,21 @@ export default {
 
 <style scoped lang="stylus">
 .sign-in
+  position relative
   display flex
   flex-direction column
   align-items flex-start
   width 100%
+
   &__title
     margin-bottom 14px
     font-size 16px
     line-height 20px
     color #404040
+    letter-spacing -0.3px
+    @media (min-width 768px)
+      font-size 18px
+
   &__input
     margin-bottom 10px
     padding 0 19px
@@ -97,11 +104,29 @@ export default {
     height 65px
     font-size 18px
     line-height 20px
+    letter-spacing -0.1px
     border 1px solid #DCE4EE
-    @media (min-width 1024px)
+    @media (min-width 768px)
       padding 0 27px
+      font-size 20px
     &--error
       border-color #DB5454
+    &:placeholder-shown + div
+      content "."
+      font-size 18px
+      line-height 20px
+      display inline
+      color black
+      position absolute
+      top 57px
+      left 20px
+      @media (min-width 768px)
+        font-size 20px
+        top 56px
+        left 28px
+    & + div
+      display none
+
   &__confirm
     margin-bottom 50px
     width 100%
@@ -115,26 +140,36 @@ export default {
     transition all 0.3s ease-out 0s
     background #2F80F3
     cursor pointer
+    letter-spacing -0.3px
+    @media (min-width 768px)
+      margin-bottom 39px
+      font-size 20px
     &:hover
       opacity 0.8
     &--disabled
       background #DCE4EE
       cursor not-allowed
+
   &__warning
     position absolute
     width 290px
-    top 290px
+    top 176px
     font-size 16px
     line-height 16px
     transition all 0.1s ease-out 0s
     color #DB5454
-    @media (min-width 1024px)
+    letter-spacing -0.3px
+    @media (min-width 768px)
       width 412px
+      line-height 20px
     &--hidden
       opacity 0
+
   &__accept
     font-size 14px
     line-height 20px
+    letter-spacing -0.3px
+
   &__accept-link
     color inherit
     text-decoration underline

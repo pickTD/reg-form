@@ -16,10 +16,9 @@
         v-model="codeLocal[index]"
         ref="code"
         class="sms-auth__code-item"
-        type="text"
+        type="tel"
+        pattern="[0-9]"
         :placeholder="i"
-        @keyup.left="focusLeft(index)"
-        @keyup.right="focusRight(index)"
         @keypress="validateValue($event, index)"
         @input="handleInput($event, index)"
         @paste="handlePaste($event)"
@@ -32,7 +31,10 @@
       Вы ввели неправильный код, попробуйте еще раз
     </p>
     <div class="sms-auth__timer">
-      <p v-if="timer && timeLeft">
+      <p
+        v-if="timer && timeLeft"
+        class="sms-auth__timer--left"
+      >
         Получить новый код можно<br>через 0:{{ String(timeLeft).padStart(2, '0') }}
       </p>
       <p
@@ -145,29 +147,37 @@ export default {
   flex-direction column
   align-items flex-start
   width 100%
+
   &__title
     margin-bottom 9px
     font-size 14px
     line-height 20px
-    @media (min-width 1024px)
+    letter-spacing -0.2px
+    @media (min-width 768px)
       margin 16px 0 10px
       font-size 20px
+      letter-spacing -0.26px
+
   &__back
     margin-bottom 29px
     font-size 14px
     line-height 20px
     color #2F80F3
     cursor pointer
-    @media (min-width 1024px)
+    letter-spacing -0.2px
+    @media (min-width 768px)
       margin-bottom 35px
       font-size 20px
+      letter-spacing -0.3px
+
   &__code
-    margin-bottom 66px
+    margin-bottom 67px
     display flex
     justify-content space-between
     width 100%
-    @media (min-width 1024px)
+    @media (min-width 768px)
       margin-bottom 49px
+
     &-item
       width 65px
       height 65px
@@ -175,33 +185,52 @@ export default {
       line-height 20px
       text-align center
       border 1px solid #DCE4EE
-      @media (min-width 1024px)
+      @media (min-width 768px)
         width 90px
         height 80px
         font-size 40px
         border 1px solid rgba(47, 128, 243, 0.32)
       &::placeholder
         color #F8F9F9
+
   &__warning
     position absolute
     width 290px
     top 259px
     font-size 16px
-    line-height 17px
+    line-height 18px
     transition all 0.1s ease-out 0s
     color #DB5454
-    @media (min-width 1024px)
+    letter-spacing -0.33px
+    @media (min-width 768px)
       width 412px
       top 299px
       line-height 20px
+      letter-spacing -0.35px
+    @media (min-width 1400px)
+      font-size 18px
     &--hidden
       opacity 0
+
   &__timer
     align-self center
     font-size 16px
     line-height 20px
     text-align center
     color #788AA4
+    @media (min-width 768px)
+      font-size 20px
+    &--left
+      margin-left -4px
+      letter-spacing -0.3px
+      @media (min-width 768px)
+        padding-left 1px
     &--resend
+      width 125px
       cursor pointer
+      letter-spacing -0.3px
+      @media (min-width 768px)
+        width 100%
+        padding-left 9px
+        letter-spacing -0.4px
 </style>

@@ -40,7 +40,7 @@ export default {
     width 100%
     height 100%
     background white
-    @media (min-width 1024px)
+    @media (min-width 768px)
       padding 54px 60px 0 48px
       width 520px
       height 419px
@@ -49,7 +49,7 @@ export default {
   &__wrap
     width 290px
     margin 0 auto
-    @media (min-width 1024px)
+    @media (min-width 768px)
       width 100%
 
   &__close
@@ -61,9 +61,9 @@ export default {
     background url('../../assets/close.svg')
     cursor pointer
     transition all 0.3s ease-out 0s
-    @media (min-width 1024px)
-      top 26px
-      right 24px
+    @media (min-width 768px)
+      top 25px
+      right 23px
     &:hover
       transform rotate(90deg)
 
@@ -74,6 +74,7 @@ export default {
     font-weight 500
     font-size 22px
     line-height 20px
-    @media (min-width 1024px)
+    letter-spacing -0.4px
+    @media (min-width 768px)
       font-size 25px
 </style>
